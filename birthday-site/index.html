@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Happy Birthday</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+  <!-- decorative floating shapes for extra charm -->
+  <div class="floaters" aria-hidden="true">
+    <span class="floater f1"></span>
+    <span class="floater f2"></span>
+    <span class="floater f3"></span>
+  </div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="logo">Happy Birthday ✨</h1>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-photo">
+          <img src="images/placeholder1.svg" alt="Hero photo" />
+        </div>
+        <div class="hero-text">
+          <h2 class="hero-title">Happy Birthday, <span class="name">[Her Name]</span> 🎉</h2>
+          <p id="typed-msg" class="lead typed" aria-live="polite" data-text='[Her Name], today we celebrate your smile, your kindness, and the light you bring to everyone around you.'></p>
+          <p class="lead small">Scroll to see what makes you so special — your family, friends, dreams, and the memories I cherish.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="family" class="section">
+      <div class="container">
+        <h3>Her Family</h3>
+        <p class="section-intro">The people who raised such an amazing person — kind, supportive, and always there for her.</p>
+        <div class="cards reveal">
+          <article class="card">
+            <img src="images/placeholder2.svg" alt="Family photo" />
+            <h4>Home & Roots</h4>
+            <p>A few words about her family, the values they share, and the warmth of her home.</p>
+          </article>
+          <article class="card">
+            <img src="images/placeholder3.svg" alt="Family moment" />
+            <h4>Cherished Moments</h4>
+            <p>Family traditions, stories, and the love that shaped who she is.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Long-scrolling story / timeline inspired by the example site -->
+    <section id="story" class="section story-section">
+      <div class="container">
+        <h2 class="story-title">A few moments I'll always remember...</h2>
+
+        <article class="story-entry reveal">
+          <h3 class="entry-heading">The first time I saw her</h3>
+          <p class="entry-text">A random day, a simple moment — but something about her smile stayed with me. Write about that first impression here.</p>
+          <div class="entry-media">
+            <img src="images/placeholder2.svg" alt="First impression" />
+            <figcaption>That moment I won't forget.</figcaption>
+          </div>
+        </article>
+
+        <article class="story-entry reveal">
+          <h3 class="entry-heading">Times we talked</h3>
+          <p class="entry-text">Maybe it was a class, a group project, or a casual conversation. Small moments that meant a lot to me.</p>
+          <div class="entry-media">
+            <img src="images/placeholder1.svg" alt="A conversation" />
+            <figcaption>Simple moments that felt special.</figcaption>
+          </div>
+        </article>
+
+        <article class="story-entry reveal">
+          <h3 class="entry-heading">What I admire about her</h3>
+          <p class="entry-text">Her laughter, her kindness, the way she lights up a room. Write about the qualities that make her amazing to you.</p>
+          <div class="entry-media gallery">
+            <img src="images/placeholder3.svg" alt="Her smile" />
+            <img src="images/placeholder2.svg" alt="Her spirit" />
+          </div>
+        </article>
+
+        <article class="story-entry reveal">
+          <h3 class="entry-heading">A message from the heart</h3>
+          <p class="entry-text">Even though we're not together, I wanted you to know how much you mean to me. Replace this with your personal message — keep it sincere and respectful.</p>
+          <blockquote class="entry-quote">You inspire me to be better, and I'm grateful to know someone as wonderful as you.</blockquote>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="friends" class="section alt">
+      <div class="container">
+        <h3>Her Friends</h3>
+        <p class="section-intro">The circle that laughs with her, supports her, and makes life brighter.</p>
+        <div class="gallery" id="friends-gallery">
+          <img src="images/placeholder1.svg" alt="Friend 1" data-caption="Friend 1: college days" class="reveal-img">
+          <img src="images/placeholder2.svg" alt="Friend 2" data-caption="Friend 2: weekend trips" class="reveal-img">
+          <img src="images/placeholder3.svg" alt="Friend 3" data-caption="Friend 3: late nights" class="reveal-img">
+        </div>
+      </div>
+    </section>
+
+    <section id="dream" class="section">
+      <div class="container">
+        <h3>Her Dream</h3>
+        <p class="section-intro">She has dreams that inspire me — goals she's chasing with passion and determination.</p>
+        <div class="note reveal">
+          <p>Example: "To travel the world, to build a career she loves, to keep making people smile, and to live life on her own terms."</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="vision" class="section alt">
+      <div class="container">
+        <h3>Her Vision</h3>
+        <p class="section-intro">She sees the world with kindness, ambition, and a heart full of purpose.</p>
+        <ul class="vision-list">
+          <li>Be kind and generous</li>
+          <li>Keep learning and creating</li>
+          <li>Lift up the people around her</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="us" class="section">
+      <div class="container">
+        <h3>Photos & Memories</h3>
+        <p class="section-intro">A small collection of moments — group photos, events, or places that remind me of her.</p>
+        <div class="grid" id="us-gallery">
+          <figure>
+            <img src="images/placeholder1.svg" alt="Memory 1" data-caption="A fun day">
+            <figcaption>A fun day</figcaption>
+          </figure>
+          <figure>
+            <img src="images/placeholder2.svg" alt="Memory 2" data-caption="A shared moment">
+            <figcaption>A shared moment</figcaption>
+          </figure>
+          <figure>
+            <img src="images/placeholder3.svg" alt="Memory 3" data-caption="A smile I remember">
+            <figcaption>A smile I remember</figcaption>
+          </figure>
+        </div>
+        <button id="open-surprise" class="btn btn-surprise">A birthday wish for you</button>
+      </div>
+    </section>
+
+    <!-- Lightbox modal -->
+    <div id="lightbox" class="lightbox" aria-hidden="true">
+      <div class="lightbox-content">
+        <button id="lb-close" class="lb-close" aria-label="Close">×</button>
+        <img id="lb-image" src="" alt="" />
+        <p id="lb-caption"></p>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Made with ♥ and admiration. Replace content and images in the <code>images/</code> folder.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
