@@ -1,13 +1,16 @@
 # Birthday site (static)
 
-This is a small static single-page site scaffold to celebrate someone's birthday. It contains sections for family, friends, dream, vision, and the "about us" gallery.
+This is a small static single-page site scaffold to celebrate someone's 19th birthday. It contains a full-screen hero with video/image background and sections for family, friends, dream, vision, and memories.
 
-How to use
+## How to use
 - Open `index.html` in your browser (no build step required).
+- **Replace the hero background**: 
+  - For video: Add your video file as `images/hero-video.mp4` (or update the `src` in index.html)
+  - For image only: Replace `images/placeholder1.svg` with your photo and remove/comment out the `<video>` element
 - Replace the placeholder images in the `images/` folder with your photos. Keep the same filenames or update the `src` attributes in `index.html`.
-- Edit the text content (headings, paragraphs, captions) to personalize the messages.
+- Edit the text content (headings, paragraphs, captions, `[Her Name]`) to personalize the messages.
 
-Optional enhancements
+## Optional enhancements
 - Add confetti (e.g., canvas-confetti from CDN) when the user clicks the "Open your surprise" button.
 - Add audio by inserting an `<audio>` element and playing it from `script.js`.
 - Replace the simple lightbox with a library like `basicLightbox` or `SimpleLightbox` if you want more features.

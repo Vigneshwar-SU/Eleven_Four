@@ -38,28 +38,20 @@ document.addEventListener('DOMContentLoaded', ()=>{
   lightbox.addEventListener('click', (e)=>{ if(e.target === lightbox) closeLightbox(); });
   document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeLightbox(); });
 
-  // Surprise button (placeholder for confetti or audio)
-  const surprise = document.getElementById('open-surprise');
-  surprise && surprise.addEventListener('click', ()=>{
-    alert('Surprise! Replace this with confetti, audio, or a hidden message.');
-  });
-
-  // Mobile nav toggle
-  const navToggle = document.getElementById('nav-toggle');
-  const mainNav = document.getElementById('main-nav');
-  if(navToggle && mainNav){
-    navToggle.addEventListener('click', ()=>{
-      const open = mainNav.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', String(open));
-    });
-    // close nav when a link is clicked
-    mainNav.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=>{
-      if(mainNav.classList.contains('open')){
-        mainNav.classList.remove('open');
-        navToggle.setAttribute('aria-expanded','false');
-      }
-    }));
-  }
+  // Touch swipe to close lightbox (mobile optimization)
+  let touchStartY = 0;
+  lightbox.addEventListener('touchstart', (e)=>{
+    touchStartY = e.touches[0].clientY;
+  },{passive:true});
+  
+  lightbox.addEventListener('touchend', (e)=>{
+    const touchEndY = e.changedTouches[0].clientY;
+    const diff = touchStartY - touchEndY;
+    // Swipe down to close
+    if(diff < -80){
+      closeLightbox();
+    }
+  },{passive:true});
 
   // Typed text effect (simple)
   const typedEl = document.getElementById('typed-msg');
@@ -76,45 +68,37 @@ document.addEventListener('DOMContentLoaded', ()=>{
       }
     }
     // start typing after a short delay
-    setTimeout(typeChar, 600);
+    setTimeout(typeChar, 1200);
   }
 
-  // reveal-on-scroll using IntersectionObserver
+  // reveal-on-scroll using IntersectionObserver with stagger
   const reveals = document.querySelectorAll('.reveal, .reveal-img');
   const obs = new IntersectionObserver((entries, o)=>{
-    entries.forEach(e=>{
+    entries.forEach((e,idx)=>{
       if(e.isIntersecting){
-        e.target.classList.add('show');
+        // Add stagger delay
+        setTimeout(()=>{
+          e.target.classList.add('show');
+          // Random animation variant for variety
+          const variants = ['slide-left','slide-right','zoom'];
+          if(e.target.classList.contains('reveal') && Math.random() > 0.6){
+            e.target.classList.add(variants[Math.floor(Math.random()*variants.length)]);
+          }
+        }, idx * 80);
+        
         // staggered for images
         if(e.target.classList.contains('reveal-img')){
-          e.target.style.transitionDelay = (Math.random()*300)+'ms';
+          e.target.style.transitionDelay = (idx * 120)+'ms';
           e.target.style.opacity = 1;
           e.target.style.transform = 'translateY(0) scale(1)';
         }
         o.unobserve(e.target);
       }
     })
-  },{threshold:0.12});
+  },{threshold:0.15, rootMargin:'0px 0px -50px 0px'});
   reveals.forEach(r=>obs.observe(r));
 
-  // parallax hero photo subtle effect
-  const heroPhoto = document.querySelector('.hero-photo img');
-  if(heroPhoto){
-    window.addEventListener('scroll', ()=>{
-      const sc = window.scrollY;
-      const y = Math.min(30, sc * 0.04);
-      heroPhoto.style.transform = `translateY(${y}px) scale(${1 + Math.min(0.03, sc*0.0006)})`;
-    },{passive:true});
-  }
-
-  // small extra: animate the big story title on load
-  const storyTitle = document.querySelector('.story-title');
-  if(storyTitle){
-    storyTitle.animate([
-      {opacity:0, transform:'translateY(12px) scale(0.98)'},
-      {opacity:1, transform:'translateY(0) scale(1)'}
-    ],{duration:900, easing:'cubic-bezier(.2,.9,.2,1)', fill:'forwards', delay:450});
-  }
+  // Parallax effects removed for better performance and cleaner experience
 
   // Surprise: confetti + heart burst + small animation
   const surpriseBtn = document.querySelector('.btn-surprise');
@@ -122,19 +106,231 @@ document.addEventListener('DOMContentLoaded', ()=>{
     surpriseBtn.addEventListener('click', (e)=>{
       // burst confetti if library loaded
       try{
+        // Multiple confetti bursts with different colors
         confetti && confetti({
-          particleCount: 120,
+          particleCount: 100,
           spread: 160,
-          origin: { y: 0.3 }
+          origin: { y: 0.3 },
+          colors: ['#1e40af','#3b82f6','#93c5fd','#dbeafe']
         });
-        // a second gentle burst
-        setTimeout(()=>confetti({particleCount: 60,spread:100,origin:{y:0.35}}), 350);
+        // second burst from different angle
+        setTimeout(()=>confetti({
+          particleCount: 80,
+          angle: 60,
+          spread:100,
+          origin:{x:0.2, y:0.4},
+          colors: ['#1e40af','#3b82f6','#93c5fd']
+        }), 250);
+        // third burst from other side
+        setTimeout(()=>confetti({
+          particleCount: 80,
+          angle: 120,
+          spread:100,
+          origin:{x:0.8, y:0.4},
+          colors: ['#3b82f6','#93c5fd','#dbeafe']
+        }), 400);
       }catch(err){
-        // fallback: small animation
-        surpriseBtn.animate([{transform:'scale(1)'},{transform:'scale(1.06)'},{transform:'scale(1)'}],{duration:700,easing:'cubic-bezier(.2,.9,.2,1)'});
+        // fallback: animated button
+        surpriseBtn.animate([
+          {transform:'scale(1) rotate(0deg)'},
+          {transform:'scale(1.15) rotate(3deg)'},
+          {transform:'scale(0.95) rotate(-3deg)'},
+          {transform:'scale(1) rotate(0deg)'}
+        ],{duration:800,easing:'cubic-bezier(.2,.9,.2,1)'});
       }
-      // small visual pulse on the header
-      document.querySelector('.site-header')?.animate([{transform:'translateY(0)'},{transform:'translateY(-6px)'},{transform:'translateY(0)'}],{duration:700,easing:'ease-out'});
+      // animate hero content
+      document.querySelector('.hero-content')?.animate([
+        {transform:'scale(1) translateY(0)'},
+        {transform:'scale(1.02) translateY(-10px)'},
+        {transform:'scale(1) translateY(0)'}
+      ],{duration:900,easing:'cubic-bezier(.2,.9,.2,1)'});
+    });
+  }
+
+  // Auto-scroll for Your Peps section with ultra-smooth continuous scrolling
+  const pepsGrid = document.querySelector('.peps-grid');
+  if(pepsGrid) {
+    let scrollPosition = 0;
+    let scrollDirection = 1; // 1 for right, -1 for left
+    const scrollSpeed = 0.3; // Reduced for ultra-smooth motion
+    let isPaused = false;
+    let animationFrame;
+
+    function smoothAutoScroll() {
+      if(!isPaused) {
+        // Increment scroll position
+        scrollPosition += scrollSpeed * scrollDirection;
+        
+        // Apply smooth scroll using scrollTo
+        pepsGrid.scrollLeft = scrollPosition;
+
+        // Check boundaries and reverse direction smoothly
+        const maxScroll = pepsGrid.scrollWidth - pepsGrid.clientWidth;
+        
+        if(scrollPosition >= maxScroll && scrollDirection === 1) {
+          scrollDirection = -1; // Reverse to left
+          scrollPosition = maxScroll;
+        } else if(scrollPosition <= 0 && scrollDirection === -1) {
+          scrollDirection = 1; // Reverse to right
+          scrollPosition = 0;
+        }
+      }
+      animationFrame = requestAnimationFrame(smoothAutoScroll);
+    }
+
+    // Pause on hover (desktop)
+    pepsGrid.addEventListener('mouseenter', ()=> { 
+      isPaused = true; 
+    });
+    
+    pepsGrid.addEventListener('mouseleave', ()=> { 
+      isPaused = false;
+      scrollPosition = pepsGrid.scrollLeft; // Sync position
+    });
+
+    // Pause on touch (mobile) and handle touch end
+    let touchTimeout;
+    pepsGrid.addEventListener('touchstart', ()=> { 
+      isPaused = true;
+      clearTimeout(touchTimeout);
+    }, {passive: true});
+
+    pepsGrid.addEventListener('touchend', ()=> { 
+      scrollPosition = pepsGrid.scrollLeft; // Sync position
+      // Resume after 2 seconds of no touch
+      clearTimeout(touchTimeout);
+      touchTimeout = setTimeout(()=> {
+        isPaused = false;
+        scrollPosition = pepsGrid.scrollLeft;
+      }, 2000);
+    }, {passive: true});
+
+    // Sync scroll position when user manually scrolls
+    let userScrollTimeout;
+    pepsGrid.addEventListener('scroll', ()=> {
+      if(isPaused) {
+        scrollPosition = pepsGrid.scrollLeft;
+      }
+      
+      // Auto-resume after 3 seconds of no interaction
+      clearTimeout(userScrollTimeout);
+      userScrollTimeout = setTimeout(()=> {
+        isPaused = false;
+        scrollPosition = pepsGrid.scrollLeft;
+      }, 3000);
+    }, {passive: true});
+
+    // Start the smooth auto-scroll
+    smoothAutoScroll();
+  }
+
+  // Pep Modal functionality
+  const pepModal = document.getElementById('pep-modal');
+  const pepModalImg = document.getElementById('pep-modal-img');
+  const pepModalName = document.getElementById('pep-modal-name');
+  const pepModalNote = document.getElementById('pep-modal-note');
+  const pepModalClose = document.querySelector('.pep-modal-close');
+  const pepCards = document.querySelectorAll('.pep-card');
+
+  // Add read more buttons to each pep card
+  pepCards.forEach(card => {
+    const content = card.querySelector('.pep-content');
+    if(content && !content.querySelector('.pep-read-more')) {
+      const readMoreBtn = document.createElement('span');
+      readMoreBtn.className = 'pep-read-more';
+      readMoreBtn.textContent = 'Click to read more...';
+      content.appendChild(readMoreBtn);
+    }
+  });
+
+  // Open modal when pep card is clicked
+  pepCards.forEach(card => {
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', () => {
+      const img = card.querySelector('.pep-image img');
+      const name = card.querySelector('.pep-name');
+      const note = card.querySelector('.pep-note');
+
+      if(img && name && note) {
+        pepModalImg.src = img.src;
+        pepModalImg.alt = img.alt;
+        pepModalName.textContent = name.textContent;
+        pepModalNote.textContent = note.textContent;
+        
+        // Set the blurred background image
+        pepModal.style.setProperty('--modal-bg-image', `url(${img.src})`);
+        
+        pepModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      }
+    });
+  });
+
+  // Close modal functionality
+  function closePepModal() {
+    pepModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = ''; // Restore scrolling
+  }
+
+  if(pepModalClose) {
+    pepModalClose.addEventListener('click', closePepModal);
+  }
+
+  // Close on background click
+  if(pepModal) {
+    pepModal.addEventListener('click', (e) => {
+      if(e.target === pepModal) {
+        closePepModal();
+      }
+    });
+  }
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape' && pepModal.getAttribute('aria-hidden') === 'false') {
+      closePepModal();
+    }
+    if(e.key === 'Escape' && fullscreenViewer.getAttribute('aria-hidden') === 'false') {
+      closeFullscreen();
+    }
+  });
+
+  // Fullscreen image viewer functionality
+  const fullscreenViewer = document.getElementById('fullscreen-viewer');
+  const fullscreenImg = document.getElementById('fullscreen-img');
+  const fullscreenClose = document.querySelector('.fullscreen-close');
+  const pepModalImage = document.querySelector('.pep-modal-image');
+
+  // Open fullscreen when clicking the image in the modal
+  if(pepModalImage) {
+    pepModalImage.addEventListener('click', () => {
+      const currentImg = document.getElementById('pep-modal-img');
+      if(currentImg && currentImg.src) {
+        fullscreenImg.src = currentImg.src;
+        fullscreenImg.alt = currentImg.alt;
+        fullscreenViewer.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+  }
+
+  // Close fullscreen functionality
+  function closeFullscreen() {
+    fullscreenViewer.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  if(fullscreenClose) {
+    fullscreenClose.addEventListener('click', closeFullscreen);
+  }
+
+  // Close on background click
+  if(fullscreenViewer) {
+    fullscreenViewer.addEventListener('click', (e) => {
+      if(e.target === fullscreenViewer) {
+        closeFullscreen();
+      }
     });
   }
 });
+

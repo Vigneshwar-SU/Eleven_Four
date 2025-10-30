@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Happy Birthday</title>
+  <title>Happy 19</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -17,22 +17,82 @@
     <span class="floater f2"></span>
     <span class="floater f3"></span>
   </div>
-  <header class="site-header">
-    <div class="container header-inner">
-      <h1 class="logo">Happy Birthday ✨</h1>
-    </div>
-  </header>
+  <!-- decorative floating shapes for extra charm -->
+  <div class="floaters" aria-hidden="true">
+    <span class="floater f1"></span>
+    <span class="floater f2"></span>
+    <span class="floater f3"></span>
+  </div>
 
   <main>
     <section id="hero" class="hero">
-      <div class="container hero-inner">
-        <div class="hero-photo">
-          <img src="images/placeholder1.svg" alt="Hero photo" />
+      <div class="hero-bg">
+        <!-- Replace with your video or use the image -->
+        <video class="hero-video" autoplay muted loop playsinline poster="images/image1.jpg">
+          
+          <!-- Fallback to image if video doesn't load -->
+        </video>
+        <img class="hero-image" src="images/image1.jpg" alt="Hero background" />
+      </div>
+      <div class="hero-overlay">
+        <div class="hero-content">
+          <h1 class="hero-title">Happy 19, <span class="name">Samikssha</span> 🎉</h1>
+          
+          <p class="hero-subtitle">Scroll to see what makes you so special</p>
         </div>
-        <div class="hero-text">
-          <h2 class="hero-title">Happy Birthday, <span class="name">[Her Name]</span> 🎉</h2>
-          <p id="typed-msg" class="lead typed" aria-live="polite" data-text='[Her Name], today we celebrate your smile, your kindness, and the light you bring to everyone around you.'></p>
-          <p class="lead small">Scroll to see what makes you so special — your family, friends, dreams, and the memories I cherish.</p>
+      </div>
+    </section>
+
+    <!-- Your Peps Section - Special notes from friends -->
+    <section id="peps" class="section peps-section">
+      <div class="container">
+        <h3>Your Peps</h3>
+        <p class="section-intro">Special birthday wishes from the people who love you!</p>
+        
+        <div class="peps-grid">
+          <!-- Pep Card 1 -->
+          <article class="pep-card reveal">
+            <div class="pep-image">
+              <img src="images/sree.jpg" alt="Friend's photo" />
+            </div>
+            <div class="pep-content">
+              <h4 class="pep-name">Sree</h4>
+              <p class="pep-note">"Dear samosa,when I just look back  I see the sweetest and the nicest gurll of my life. And even though it's not the friendship from childhood but  that friendship from grade 11! The first time I saw you I still remember the gurl who wore all those pretty pretty outfits tryin to live the best of her life and also the gurl who I admire the most. And one day I saw her in an brown color top with black jeans and eyeliner in her eyes just made her look like a goddess and that moment I realized where has this gurl been I mean like look at her any boy could fall for her. When we got close day by day I started to realize that she isn't just gorgeous outside but inside too. This fine shyt is not just a Hooman but a kind soul too. When she use to yap about all her insecurities, my eyes only looked at her like the perfect creature of humankind, I am one among those who would never let her down in any circumstances and also I just love the way you are stay the same. Life has been so hard for you lately we all know that but we gotchu, never ever mind what others say you are just as perfect as your🩵I could just keep  saying things about you but here one last thing: You literally deserve the best in life keep working hard and the universe will make it up to you my gurl❤LYSM"</p>
+            </div>
+          </article>
+
+          <!-- Pep Card 2 -->
+          <article class="pep-card reveal">
+            <div class="pep-image">
+              <img src="images/placeholder2.svg" alt="Friend's photo" />
+            </div>
+            <div class="pep-content">
+              <h4 class="pep-name">Friend Name 2</h4>
+              <p class="pep-note">"Wishing you the happiest birthday ever! You deserve all the joy and success in the world. Keep shining bright! ✨"</p>
+            </div>
+          </article>
+
+          <!-- Pep Card 3 -->
+          <article class="pep-card reveal">
+            <div class="pep-image">
+              <img src="images/placeholder3.svg" alt="Friend's photo" />
+            </div>
+            <div class="pep-content">
+              <h4 class="pep-name">Friend Name 3</h4>
+              <p class="pep-note">"Happy birthday to one of the kindest souls I know! May this year bring you everything you've been dreaming of. Love you! 💕"</p>
+            </div>
+          </article>
+
+          <!-- Add more pep cards as needed -->
+          <article class="pep-card reveal">
+            <div class="pep-image">
+              <img src="images/placeholder1.svg" alt="Friend's photo" />
+            </div>
+            <div class="pep-content">
+              <h4 class="pep-name">Friend Name 4</h4>
+              <p class="pep-note">"Cheers to 19 years of being absolutely wonderful! Your friendship means the world to me. Have the best day ever! 🎂"</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -149,7 +209,7 @@
             <figcaption>A smile I remember</figcaption>
           </figure>
         </div>
-        <button id="open-surprise" class="btn btn-surprise">A birthday wish for you</button>
+        <button id="open-surprise" class="btn btn-surprise">A 19th birthday wish for you</button>
       </div>
     </section>
 
@@ -159,6 +219,31 @@
         <button id="lb-close" class="lb-close" aria-label="Close">×</button>
         <img id="lb-image" src="" alt="" />
         <p id="lb-caption"></p>
+      </div>
+    </div>
+
+    <!-- Pep Modal for expanded view -->
+    <div id="pep-modal" class="pep-modal" aria-hidden="true">
+      <div class="pep-modal-content">
+        <button class="pep-modal-close" aria-label="Close modal">&times;</button>
+        <div class="pep-modal-inner">
+          <div class="pep-modal-image">
+            <img id="pep-modal-img" src="" alt="" />
+          </div>
+          <div class="pep-modal-text">
+            <h3 id="pep-modal-name"></h3>
+            <p id="pep-modal-note"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full Screen Image Viewer -->
+    <div id="fullscreen-viewer" class="fullscreen-viewer" aria-hidden="true">
+      <button class="fullscreen-close" aria-label="Close fullscreen">&times;</button>
+      <div class="fullscreen-content">
+        <img id="fullscreen-img" src="" alt="" />
+        <p class="fullscreen-hint">📸 Psst! Don't have this pic? Now's your chance to steal it! 😏 <br>Screenshot away before I change my mind! 📱✨</p>
       </div>
     </div>
 
