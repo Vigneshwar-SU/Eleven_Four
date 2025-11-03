@@ -1,3 +1,60 @@
+// Loading Screen with Progress Tracking
+(function() {
+  const loadingScreen = document.getElementById('loading-screen');
+  const loadingProgress = document.querySelector('.loading-progress');
+  const loadingPercentage = document.querySelector('.loading-percentage');
+  
+  // Get all images and videos
+  const allMedia = [
+    ...document.querySelectorAll('img'),
+    ...document.querySelectorAll('video')
+  ];
+  
+  let loadedCount = 0;
+  const totalCount = allMedia.length;
+  
+  function updateProgress() {
+    loadedCount++;
+    const percentage = Math.round((loadedCount / totalCount) * 100);
+    loadingProgress.style.width = percentage + '%';
+    loadingPercentage.textContent = percentage + '%';
+    
+    // Hide loading screen when all media is loaded
+    if (loadedCount >= totalCount) {
+      setTimeout(() => {
+        loadingScreen.classList.add('hidden');
+        document.body.style.overflow = '';
+      }, 500);
+    }
+  }
+  
+  // Prevent scrolling while loading
+  document.body.style.overflow = 'hidden';
+  
+  // Track image loading
+  allMedia.forEach(media => {
+    if (media.tagName === 'IMG') {
+      if (media.complete) {
+        updateProgress();
+      } else {
+        media.addEventListener('load', updateProgress);
+        media.addEventListener('error', updateProgress); // Count errors too
+      }
+    } else if (media.tagName === 'VIDEO') {
+      media.addEventListener('loadeddata', updateProgress);
+      media.addEventListener('error', updateProgress);
+    }
+  });
+  
+  // Fallback: hide loading screen after 10 seconds
+  setTimeout(() => {
+    if (!loadingScreen.classList.contains('hidden')) {
+      loadingScreen.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+  }, 10000);
+})();
+
 // Basic interactions: smooth scroll, simple lightbox modal, and surprise button handler
 document.addEventListener('DOMContentLoaded', ()=>{
   // smooth scroll for anchor links (if any remain)
@@ -152,7 +209,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   if(pepsGrid) {
     let scrollPosition = 0;
     let scrollDirection = 1; // 1 for right, -1 for left
-    const scrollSpeed = 0.3; // Reduced for ultra-smooth motion
+    const scrollSpeed = 1.8; // Increased speed for faster scrolling
     let isPaused = false;
     let animationFrame;
 
@@ -258,11 +315,24 @@ document.addEventListener('DOMContentLoaded', ()=>{
         pepModalNote.textContent = note.textContent;
         
         if(video) {
-          // Show video, hide image
-          pepModalVideo.src = video.src;
+          // Show video, hide image - use MP4 for modal (better quality)
+          let videoSrc = video.src || video.currentSrc || '';
+          
+          // Convert .webm to .mp4 for fullscreen
+          if(videoSrc.endsWith('.webm')) {
+            videoSrc = videoSrc.replace('.webm', '.mp4');
+          } else {
+            // Try to get MP4 source from source elements
+            const mp4Source = video.querySelector('source[type="video/mp4"]');
+            if(mp4Source) {
+              videoSrc = mp4Source.src;
+            }
+          }
+          
+          pepModalVideo.src = videoSrc;
           pepModalVideo.style.display = 'block';
           pepModalImg.style.display = 'none';
-          pepModal.style.setProperty('--modal-bg-image', `url(${video.currentSrc || video.src})`);
+          pepModal.style.setProperty('--modal-bg-image', `url(${videoSrc})`);
         } else if(img) {
           // Show image, hide video
           pepModalImg.src = img.src;
@@ -365,8 +435,22 @@ document.addEventListener('DOMContentLoaded', ()=>{
         galleryFullscreenVideo.style.display = 'none';
         galleryFullscreenVideo.pause();
       } else if(video) {
-        // Show video
-        galleryFullscreenVideo.src = video.src;
+        // Show video - use MP4 for fullscreen (better quality)
+        // Convert .webm back to .mp4 for fullscreen viewing
+        let videoSrc = video.src || video.currentSrc || '';
+        
+        // Check if it's a webm file and convert to mp4
+        if(videoSrc.endsWith('.webm')) {
+          videoSrc = videoSrc.replace('.webm', '.mp4');
+        } else {
+          // If it has source elements, get the mp4 source
+          const mp4Source = video.querySelector('source[type="video/mp4"]');
+          if(mp4Source) {
+            videoSrc = mp4Source.src;
+          }
+        }
+        
+        galleryFullscreenVideo.src = videoSrc;
         galleryFullscreenVideo.style.display = 'block';
         galleryFullscreenImg.style.display = 'none';
         galleryFullscreenVideo.play();
@@ -410,6 +494,44 @@ document.addEventListener('DOMContentLoaded', ()=>{
   wanderingVideos.forEach(video => {
     video.play();
   });
-});
 
+  // Family Video Fullscreen Functionality
+  const familyVideoItems = document.querySelectorAll('.video-family-item');
+  
+  familyVideoItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const video = item.querySelector('video');
+      
+      if(video) {
+        // Get MP4 source for fullscreen quality
+        let videoSrc = video.src || video.currentSrc || '';
+        
+        // Convert .webm to .mp4 for fullscreen
+        if(videoSrc.endsWith('.webm')) {
+          videoSrc = videoSrc.replace('.webm', '.mp4');
+        } else {
+          const mp4Source = video.querySelector('source[type="video/mp4"]');
+          if(mp4Source) {
+            videoSrc = mp4Source.src;
+          }
+        }
+        
+        // Use the same fullscreen modal as gallery
+        galleryFullscreenVideo.src = videoSrc;
+        galleryFullscreenVideo.style.display = 'block';
+        galleryFullscreenImg.style.display = 'none';
+        galleryFullscreenVideo.play();
+        
+        galleryFullscreen.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+  });
+
+  // Auto-play family videos
+  const familyVideos = document.querySelectorAll('.video-family-item video');
+  familyVideos.forEach(video => {
+    video.play();
+  });
+});
 
