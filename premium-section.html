@@ -1,0 +1,102 @@
+  <!-- Premium Access Section -->
+  <section class="premium-access-section">
+    <div class="premium-content">
+      <div class="premium-badge">
+        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="crownGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
+              <stop offset="50%" style="stop-color:#f59e0b;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <path d="M12 2L15 8L22 9L17 14L18 21L12 18L6 21L7 14L2 9L9 8L12 2Z" fill="url(#crownGradient)" stroke="url(#crownGradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="premium-label">PREMIUM</span>
+      </div>
+      
+      <h2 class="premium-title">Version 2.0</h2>
+      <p class="premium-subtitle">Exclusive Content Awaits</p>
+      
+      <div class="premium-features">
+        <div class="feature-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Enhanced Memories</span>
+        </div>
+        <div class="feature-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Special Collections</span>
+        </div>
+        <div class="feature-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Behind The Scenes</span>
+        </div>
+      </div>
+
+      <button class="premium-access-btn" id="premiumAccessBtn">
+        <span class="btn-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M12 15V17M6 21H18C19.1046 21 20 20.1046 20 19V13C20 11.8954 19.1046 11 18 11H6C4.89543 11 4 11.8954 4 13V19C4 20.1046 4.89543 21 6 21ZM16 11V7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7V11H16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="btn-text">Request Access</span>
+        <span class="btn-shine"></span>
+      </button>
+
+      <p class="premium-note">Access requires creator approval</p>
+    </div>
+  </section>
+
+  <!-- Premium Access Modal -->
+  <div id="premiumModal" class="premium-modal" aria-hidden="true">
+    <div class="premium-modal-content">
+      <button class="premium-modal-close" id="closeModal" aria-label="Close">×</button>
+      
+      <div class="modal-header">
+        <div class="modal-icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L15 8L22 9L17 14L18 21L12 18L6 21L7 14L2 9L9 8L12 2Z" fill="#fbbf24"/>
+          </svg>
+        </div>
+        <h3 class="modal-title">Request Premium Access</h3>
+        <p class="modal-subtitle">Enter your credentials to unlock Version 2.0</p>
+      </div>
+
+      <form class="premium-form" id="premiumForm">
+        <div class="form-group">
+          <label for="accessName">Your Name</label>
+          <input type="text" id="accessName" placeholder="Enter your name" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="accessEmail">Email Address</label>
+          <input type="email" id="accessEmail" placeholder="your@email.com" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="accessCode">Access Code</label>
+          <input type="password" id="accessCode" placeholder="Enter access code" required>
+        </div>
+
+        <div class="form-group">
+          <label for="accessReason">Why do you want access?</label>
+          <textarea id="accessReason" rows="3" placeholder="Brief reason (optional)"></textarea>
+        </div>
+
+        <button type="submit" class="submit-access-btn">
+          <span>Submit Request</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </form>
+
+      <p class="modal-footer-text">Your request will be reviewed by the creator</p>
+    </div>
+  </div>

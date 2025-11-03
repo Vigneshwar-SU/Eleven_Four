@@ -358,6 +358,47 @@ document.addEventListener('DOMContentLoaded', ()=>{
     pepModalClose.addEventListener('click', closePepModal);
   }
 
+  // Maximize button functionality for pep modal
+  const pepMaximizeBtn = document.querySelector('.pep-maximize-btn');
+
+  if(pepMaximizeBtn) {
+    pepMaximizeBtn.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevent modal close
+      
+      const pepModalImg = document.getElementById('pep-modal-img');
+      const pepModalVideo = document.getElementById('pep-modal-video');
+      const galleryFullscreen = document.getElementById('gallery-fullscreen');
+      const galleryFullscreenImg = document.getElementById('gallery-fullscreen-img');
+      const galleryFullscreenVideo = document.getElementById('gallery-fullscreen-video');
+      
+      if(galleryFullscreen && galleryFullscreenImg && galleryFullscreenVideo) {
+        if(pepModalVideo && pepModalVideo.style.display !== 'none' && pepModalVideo.src) {
+          // Show video in fullscreen
+          let videoSrc = pepModalVideo.src;
+          // Convert .webm to .mp4 for better fullscreen playback
+          if(videoSrc.endsWith('.webm')) {
+            videoSrc = videoSrc.replace('.webm', '.mp4');
+          }
+          galleryFullscreenVideo.src = videoSrc;
+          galleryFullscreenVideo.style.display = 'block';
+          galleryFullscreenImg.style.display = 'none';
+        } else if(pepModalImg && pepModalImg.src) {
+          // Show image in fullscreen
+          galleryFullscreenImg.src = pepModalImg.src;
+          galleryFullscreenImg.alt = pepModalImg.alt || '';
+          galleryFullscreenImg.style.display = 'block';
+          galleryFullscreenVideo.style.display = 'none';
+          if(galleryFullscreenVideo.pause) {
+            galleryFullscreenVideo.pause();
+          }
+        }
+        
+        galleryFullscreen.setAttribute('aria-hidden', 'false');
+        closePepModal(); // Close the pep modal
+      }
+    });
+  }
+
   // Close on background click
   if(pepModal) {
     pepModal.addEventListener('click', (e) => {
@@ -462,12 +503,17 @@ document.addEventListener('DOMContentLoaded', ()=>{
   });
 
   // Close gallery fullscreen
+  let currentPlayingFamilyVideo = null; // Track the family video that opened fullscreen
+  
   function closeGalleryFullscreen() {
     galleryFullscreen.setAttribute('aria-hidden', 'true');
     galleryFullscreenImg.src = '';
     galleryFullscreenVideo.src = '';
     galleryFullscreenVideo.pause();
     document.body.style.overflow = '';
+    
+    // Don't resume the original family video - keep it paused
+    currentPlayingFamilyVideo = null;
   }
 
   if(galleryFullscreenClose) {
@@ -489,20 +535,128 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }
   });
 
-  // Auto-play videos in wandering gallery
-  const wanderingVideos = document.querySelectorAll('.wandering-item video');
-  wanderingVideos.forEach(video => {
-    video.play();
+  // Gallery Videos - Add Play Button Overlays and Click-to-Play
+  const galleryVideos = document.querySelectorAll('.gallery-video');
+  const galleryItems = [];
+  
+  galleryVideos.forEach(video => {
+    const item = video.closest('.wandering-item');
+    galleryItems.push({ item, video });
+    
+    // Create play button overlay
+    const playOverlay = document.createElement('div');
+    playOverlay.className = 'gallery-video-overlay';
+    playOverlay.innerHTML = `<svg viewBox="0 0 24 24"><polygon points="8,5 8,19 19,12" fill="#fff"/></svg>`;
+    item.appendChild(playOverlay);
+    
+    // Click to play/pause
+    item.addEventListener('click', (e) => {
+      if (video.paused) {
+        e.stopPropagation(); // Prevent fullscreen modal
+        
+        // Pause all other gallery videos and reset them
+        galleryItems.forEach(({ item: otherItem, video: otherVideo }) => {
+          if (otherVideo !== video) {
+            otherVideo.pause();
+            otherVideo.currentTime = 0; // Reset to beginning
+            otherVideo.load(); // Reload to show first frame
+            otherItem.classList.remove('video-playing');
+          }
+        });
+        
+        // Play the clicked video
+        video.play();
+        item.classList.add('video-playing');
+      }
+    });
+    
+    // Show play button when paused
+    video.addEventListener('pause', () => {
+      if (!video.ended) {
+        item.classList.remove('video-playing');
+      }
+    });
+    
+    // Hide play button when playing
+    video.addEventListener('play', () => {
+      item.classList.add('video-playing');
+    });
   });
 
-  // Family Video Fullscreen Functionality
+  // Family Video Play Button Functionality
   const familyVideoItems = document.querySelectorAll('.video-family-item');
   
   familyVideoItems.forEach(item => {
-    item.addEventListener('click', () => {
-      const video = item.querySelector('video');
+    const video = item.querySelector('video');
+    const playBtn = item.querySelector('.video-play-btn');
+    
+    if(playBtn && video) {
+      // Play/Pause button click handler
+      playBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent triggering fullscreen
+        
+        // If video is playing, pause it
+        if (!video.paused) {
+          video.pause();
+          item.classList.remove('playing');
+          return;
+        }
+        
+        // Pause and reset all other family videos
+        familyVideoItems.forEach(otherItem => {
+          const otherVideo = otherItem.querySelector('video');
+          if (otherVideo && otherVideo !== video) {
+            otherVideo.pause();
+            otherVideo.currentTime = 0; // Reset to beginning
+            otherVideo.load(); // Reload to show poster
+            otherItem.classList.remove('playing');
+          }
+        });
+        
+        // Mute all gallery videos
+        galleryItems.forEach(({ video: galleryVideo }) => {
+          if (galleryVideo) {
+            galleryVideo.muted = true;
+          }
+        });
+        
+        // Play the clicked video with sound
+        video.muted = false; // Enable sound for family video
+        video.play();
+        
+        // Add playing class to hide play button and show pause button
+        item.classList.add('playing');
+      });
       
-      if(video) {
+      // Video ended handler - show play button again
+      video.addEventListener('ended', () => {
+        item.classList.remove('playing');
+      });
+      
+      // Video pause handler - show play button again
+      video.addEventListener('pause', () => {
+        if (!video.ended) {
+          // Only show button if not ended (loop will restart)
+          setTimeout(() => {
+            if (video.paused && !video.ended) {
+              item.classList.remove('playing');
+            }
+          }, 100);
+        }
+      });
+    }
+    
+    // Fullscreen on video click (when playing)
+    item.addEventListener('click', () => {
+      // Only open fullscreen if video is already playing
+      if(video && !video.paused) {
+        // Store current time before pausing
+        const currentTime = video.currentTime;
+        
+        // Pause the original video to prevent double playback
+        video.pause();
+        currentPlayingFamilyVideo = video;
+        
         // Get MP4 source for fullscreen quality
         let videoSrc = video.src || video.currentSrc || '';
         
@@ -520,18 +674,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
         galleryFullscreenVideo.src = videoSrc;
         galleryFullscreenVideo.style.display = 'block';
         galleryFullscreenImg.style.display = 'none';
+        galleryFullscreenVideo.currentTime = currentTime; // Resume from same time
         galleryFullscreenVideo.play();
         
         galleryFullscreen.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
       }
     });
-  });
-
-  // Auto-play family videos
-  const familyVideos = document.querySelectorAll('.video-family-item video');
-  familyVideos.forEach(video => {
-    video.play();
   });
 });
 

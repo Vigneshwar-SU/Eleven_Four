@@ -1,0 +1,869 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Happy 19</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="premium-styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+  <!-- Loading Screen -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="loading-content">
+      <div class="loading-heart">
+        <svg viewBox="0 0 32 29.6" width="80" height="74">
+          <defs>
+            <linearGradient id="heartGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#1e40af;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
+            c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
+        </svg>
+      </div>
+      <h2 class="loading-title">Loading with Love...</h2>
+      <p class="loading-subtitle">Preparing something special ✨</p>
+      <div class="loading-bar">
+        <div class="loading-progress"></div>
+      </div>
+      <p class="loading-percentage">0%</p>
+    </div>
+  </div>
+
+  <!-- decorative floating shapes for extra charm -->
+  <div class="floaters" aria-hidden="true">
+    <span class="floater f1"></span>
+    <span class="floater f2"></span>
+    <span class="floater f3"></span>
+  </div>
+  <!-- decorative floating shapes for extra charm -->
+  <div class="floaters" aria-hidden="true">
+    <span class="floater f1"></span>
+    <span class="floater f2"></span>
+    <span class="floater f3"></span>
+  </div>
+
+  <main>
+    <section id="hero" class="hero">
+      <div class="hero-bg">
+        <!-- Replace with your video or use the image -->
+        <video class="hero-video" autoplay muted loop playsinline poster="images/image1.jpg">
+
+          <!-- Fallback to image if video doesn't load -->
+        </video>
+        <img class="hero-image" src="images/image1.jpg" alt="Hero background" />
+      </div>
+      <div class="hero-overlay">
+        <div class="hero-content">
+          <h1 class="hero-title">Happy 19, <span class="name">Samikssha</span> 🎉</h1>
+
+          <p class="hero-subtitle">Scroll to see what makes you so special</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Your Peps Section - Special notes from friends -->
+    <section id="peps" class="section peps-section">
+      <div class="container">
+        <h3>Your Peps</h3>
+        <p class="section-intro">Special birthday wishes from the people who love you!</p>
+
+        <div class="peps-grid">
+          <!-- Pep Card 1 -->
+          <article class="pep-card reveal">
+            <div class="pep-image">
+              <img src="images/sree.jpg" alt="Friend's photo" />
+            </div>
+            <div class="pep-content">
+              <h4 class="pep-name">Sree</h4>
+              <p class="pep-note">"Dear samosa,when I just look back I see the sweetest and the nicest gurll of my life.
+                And even though it's not the friendship from childhood but that friendship from grade 11! The first time
+                I saw you I still remember the gurl who wore all those pretty pretty outfits tryin to live the best of
+                her life and also the gurl who I admire the most. And one day I saw her in an brown color top with black
+                jeans and eyeliner in her eyes just made her look like a goddess and that moment I realized where has
+                this gurl been I mean like look at her any boy could fall for her. When we got close day by day I
+                started to realize that she isn't just gorgeous outside but inside too. This fine shyt is not just a
+                Hooman but a kind soul too. When she use to yap about all her insecurities, my eyes only looked at her
+                like the perfect creature of humankind, I am one among those who would never let her down in any
+                circumstances and also I just love the way you are stay the same. Life has been so hard for you lately
+                we all know that but we gotchu, never ever mind what others say you are just as perfect as your🩵I could
+                just keep saying things about you but here one last thing: You literally deserve the best in life keep
+                working hard and the universe will make it up to you my gurl❤LYSM. You are not just a good hooman but
+                also a genuine daughter the parents would ask for, and an amazing elder sister any girl would pray for.
+                These not just wordsss but fact. You truly deserve what you have right now and even more. It's okay if
+                people don't recognize you for who you are. Your so much more that what people think and you know that
+                too. Samse I wanted to take this opportunity to thank the universe for giving me you and your family and
+                I would cherish every single moment I had and that I will have. Lysm bud❤😭virtual huggie"</p>
+            </div>
+          </article>
+
+          <!-- Pep Card 2 -->
+          <article class="pep-card reveal">
+            <div class="pep-image">
+              <img src="images/hari.jpg" alt="Friend's photo" />
+            </div>
+            <div class="pep-content">
+              <h4 class="pep-name">Hari</h4>
+              <p class="pep-note">"No matter what life throws at me, she’s always there, not just to cheer me up but to
+                remind me that I’m never alone 🧿 . Her presence feels like home, her words heal like magic, and her
+                smile is the calm in every storm❤‍🩹. I don’t say it enough, but she truly means a lot to me and I’m
+                endlessly grateful that life chose her to be my forever person. 💖"</p>
+            </div>
+          </article>
+
+          <!-- Pep Card 3 -->
+          <article class="pep-card reveal">
+            <div class="pep-image">
+              <video autoplay muted loop playsinline style="transform: rotate(-90deg) scale(1.4);">
+                <source src="images/sanjay.webm" type="video/webm">
+                <source src="images/sanjay.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="pep-content">
+              <h4 class="pep-name">Sanjay</h4>
+              <p class="pep-note">"Happy b'day samiksha
+                Nee paaka payan maari irundhalum enoda friend 😌🫶
+                "</p>
+            </div>
+          </article>
+
+          <!-- Add more pep cards as needed -->
+          <article class="pep-card reveal">
+            <div class="pep-image">
+              <img src="images/adhi.jpg" alt="Friend's photo" />
+            </div>
+            <div class="pep-content">
+              <h4 class="pep-name">Adhi</h4>
+              <p class="pep-note">"paaka erumbu maari irundhalum, manasalavu nee mt everest maari 🤩, happy
+                birthday samikssha ❤🫶🏻"</p>
+            </div>
+          </article>
+
+          <article class="pep-card reveal">
+            <div class="pep-image">
+              <img src="images/sairam.jpg" alt="Friend's photo" />
+            </div>
+            <div class="pep-content">
+              <h4 class="pep-name">Sairam</h4>
+              <p class="pep-note">"I know its ur birthday 🎁,but iam not good in giving note but as a frd i will there
+                for u and happy birthday 🎂 to my wonderful frd"</p>
+            </div>
+          </article>
+
+          <article class="pep-card reveal">
+            <div class="pep-image">
+              <video autoplay muted loop playsinline style="transform: rotate(-90deg) scale(1.4);">
+                <source src="images/shyamali.webm" type="video/webm">
+                <source src="images/shyamali.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="pep-content">
+              <h4 class="pep-name">Shyamali</h4>
+              <p class="pep-note">"Happy porandhanal Sameyyyy❤😘...Aprm seekiram sethuradha."</p>
+            </div>
+          </article>
+
+
+          <article class="pep-card reveal">
+            <div class="pep-image">
+              <img src="images/reshma.jpg" alt="Friend's photo" />
+            </div>
+            <div class="pep-content">
+              <h4 class="pep-name">Reshma</h4>
+              <p class="pep-note">"Heyy sakii mama❤Happy birthday deee🎉🎉🎉nama school days was better because of
+                youuuuu..i love you so much mamaaa..Unkuda pana sightings elam enala maraka mudiyathuuu..u will always
+                be my besttt🤍I hope we'll stay the same until last"</p>
+            </div>
+          </article>
+
+
+          <article class="pep-card reveal">
+            <div class="pep-image">
+              <img src="images/dharshni.jpg" alt="Friend's photo" />
+            </div>
+            <div class="pep-content">
+              <h4 class="pep-name">Dharshni</h4>
+              <p class="pep-note">"Happy happy bday to my bbg❤
+You've always been my comfort place, a shoulder to lean on and the best crackhead to laugh for our rest of our lives. Life has put us through all kinds of emotions and yet here we are supporting each other. We have seen each other through all phases, falling in love, getting betrayed, rising again, bringing our spark back and we have been each other's therapist. Never ever our ideas have been the solution yet it's the blind leading the blind🚶🏻. As we already promised we'll remain the same, we have been through shittiest phases of life and there's now way I will be missing our bright days.
+I've cried, shattered, broken, yet smiled through all of this only because of you, sree and shyamali. It's always been us . It will always be us.
+Always remember you're not alone, you have us.
+Love you bbg😌💩"</p>
+            </div>
+          </article>
+
+          <article class="pep-card reveal">
+            <div class="pep-image">
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="images/pearly.webm" type="video/webm">
+                <source src="images/pearly.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="pep-content">
+              <h4 class="pep-name">Pearly</h4>
+              <p class="pep-note">"Unaa pathi pesa ella onum illaa!! Nee ellam edhuku vandhutu nu dha kepen seri edho 19 years vandhuta!! Valthukal valthukal!! Unaaa pathi yosicha … una epidi irritate panalam nu dha thonum Vera ellam onum illa kelambu kelmbu"</p>
+            </div>
+          </article>
+
+          <article class="pep-card reveal">
+            <div class="pep-image">
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="images/abhi.webm" type="video/webm">
+                <source src="images/abhi.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="pep-content">
+              <h4 class="pep-name">Abhi</h4>
+              <p class="pep-note">"Wish you many more happy returns of the day eruma ,lots of happy memories with you , and always be happy and anyways always there for u sweety sister❤🫶🏻,You're an amazing cousin! Love you ! ❤"</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Family Section -->
+    <section id="family" class="section video-family-section">
+      <div class="container">
+        <div class="video-family-header">
+          <span class="video-family-label">Her Foundation</span>
+          <h3 class="video-family-title">The Ones Who Matter Most</h3>
+          <div class="video-family-divider">❤</div>
+        </div>
+
+        <div class="video-family-grid">
+          <!-- Parents Video - Large Top -->
+          <div class="video-family-item video-family-large">
+            <video loop playsinline preload="metadata">
+              <source src="images/parents.webm" type="video/webm">
+              <source src="images/parents.mp4" type="video/mp4">
+            </video>
+            <div class="video-family-overlay">
+              <div class="video-family-label-tag">Mr & Mrs. Muthu</div>
+            </div>
+            <button class="video-play-btn" aria-label="Play/Pause video">
+              <svg class="play-icon" width="60" height="60" viewBox="0 0 60 60">
+                <circle cx="30" cy="30" r="28" fill="rgba(59,130,246,0.9)" stroke="#fff" stroke-width="2"/>
+                <polygon points="24,18 24,42 42,30" fill="#fff"/>
+              </svg>
+              <svg class="pause-icon" width="60" height="60" viewBox="0 0 60 60">
+                <circle cx="30" cy="30" r="28" fill="rgba(59,130,246,0.9)" stroke="#fff" stroke-width="2"/>
+                <rect x="20" y="18" width="7" height="24" fill="#fff"/>
+                <rect x="33" y="18" width="7" height="24" fill="#fff"/>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Mimi Videos - Three Small Bottom -->
+          <div class="video-family-item video-family-small">
+            <video loop playsinline preload="metadata" poster="images/mimi1.jpg">
+              <source src="images/mimi1.webm" type="video/webm">
+              <source src="images/mimi1.mp4" type="video/mp4">
+            </video>
+            <div class="video-family-overlay">
+              <div class="video-family-label-tag">Mimi - Take1</div>
+            </div>
+            <button class="video-play-btn" aria-label="Play/Pause video">
+              <svg class="play-icon" width="50" height="50" viewBox="0 0 60 60">
+                <circle cx="30" cy="30" r="28" fill="rgba(59,130,246,0.9)" stroke="#fff" stroke-width="2"/>
+                <polygon points="24,18 24,42 42,30" fill="#fff"/>
+              </svg>
+              <svg class="pause-icon" width="50" height="50" viewBox="0 0 60 60">
+                <circle cx="30" cy="30" r="28" fill="rgba(59,130,246,0.9)" stroke="#fff" stroke-width="2"/>
+                <rect x="20" y="18" width="7" height="24" fill="#fff"/>
+                <rect x="33" y="18" width="7" height="24" fill="#fff"/>
+              </svg>
+            </button>
+          </div>
+
+          <div class="video-family-item video-family-small">
+            <video loop playsinline preload="metadata" poster="images/mimi2.jpg">
+              <source src="images/mimi2.webm" type="video/webm">
+              <source src="images/mimi2.mp4" type="video/mp4">
+            </video>
+            <div class="video-family-overlay">
+              <div class="video-family-label-tag">Mimi - Take2</div>
+            </div>
+            <button class="video-play-btn" aria-label="Play/Pause video">
+              <svg class="play-icon" width="50" height="50" viewBox="0 0 60 60">
+                <circle cx="30" cy="30" r="28" fill="rgba(59,130,246,0.9)" stroke="#fff" stroke-width="2"/>
+                <polygon points="24,18 24,42 42,30" fill="#fff"/>
+              </svg>
+              <svg class="pause-icon" width="50" height="50" viewBox="0 0 60 60">
+                <circle cx="30" cy="30" r="28" fill="rgba(59,130,246,0.9)" stroke="#fff" stroke-width="2"/>
+                <rect x="20" y="18" width="7" height="24" fill="#fff"/>
+                <rect x="33" y="18" width="7" height="24" fill="#fff"/>
+              </svg>
+            </button>
+          </div>
+
+          <div class="video-family-item video-family-small">
+            <video loop playsinline preload="metadata" poster="images/mimi3.jpg">
+              <source src="images/mimi3.webm" type="video/webm">
+              <source src="images/mimi3.mp4" type="video/mp4">
+            </video>
+            <div class="video-family-overlay">
+              <div class="video-family-label-tag">Mimi - Take3</div>
+            </div>
+            <button class="video-play-btn" aria-label="Play/Pause video">
+              <svg class="play-icon" width="50" height="50" viewBox="0 0 60 60">
+                <circle cx="30" cy="30" r="28" fill="rgba(59,130,246,0.9)" stroke="#fff" stroke-width="2"/>
+                <polygon points="24,18 24,42 42,30" fill="#fff"/>
+              </svg>
+              <svg class="pause-icon" width="50" height="50" viewBox="0 0 60 60">
+                <circle cx="30" cy="30" r="28" fill="rgba(59,130,246,0.9)" stroke="#fff" stroke-width="2"/>
+                <rect x="20" y="18" width="7" height="24" fill="#fff"/>
+                <rect x="33" y="18" width="7" height="24" fill="#fff"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wandering Gallery Section -->
+    <section id="memories" class="section wandering-gallery-section">
+      <div class="container">
+        <div class="gallery-header">
+          <span class="gallery-label">Cherished Moments</span>
+          <h3 class="gallery-title">Memories in Motion</h3>
+          <p class="gallery-subtitle">Click any memory to view it in fullscreen</p>
+        </div>
+
+        <div class="wandering-gallery">
+          <!-- Row 1: 14 items -->
+          <div class="gallery-row">
+            <div class="wandering-item">
+              <img src="images/image1.jpg" alt="Memory 1" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/image2.jpg" alt="Memory 2" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/image3.jpg" alt="Memory 3" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/image4.jpg" alt="Memory 4" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/image5.jpg" alt="Memory 5" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/image6.jpg" alt="Memory 6" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/sanjay.webm" type="video/webm"><source src="images/sanjay.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video1.webm" type="video/webm"><source src="images/video1.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video2.webm" type="video/webm"><source src="images/video2.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video3.webm" type="video/webm"><source src="images/video3.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video4.webm" type="video/webm"><source src="images/video4.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video5.webm" type="video/webm"><source src="images/video5.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video6.webm" type="video/webm"><source src="images/video6.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/pearly.webm" type="video/webm"><source src="images/pearly.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/abhi.webm" type="video/webm"><source src="images/abhi.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new2.webm" type="video/webm"><source src="images/new2.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new3.webm" type="video/webm"><source src="images/new3.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new4.webm" type="video/webm"><source src="images/new4.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new5.webm" type="video/webm"><source src="images/new5.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new6.webm" type="video/webm"><source src="images/new6.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new7.webm" type="video/webm"><source src="images/new7.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new8.webm" type="video/webm"><source src="images/new8.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new9.webm" type="video/webm"><source src="images/new9.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new10.webm" type="video/webm"><source src="images/new10.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <img src="images/sree.jpg" alt="Sree" />
+            </div>
+            <!-- Duplicate for seamless infinite scroll -->
+            <div class="wandering-item">
+              <img src="images/image1.jpg" alt="Memory 1" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/image2.jpg" alt="Memory 2" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/image3.jpg" alt="Memory 3" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/image4.jpg" alt="Memory 4" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/image5.jpg" alt="Memory 5" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/image6.jpg" alt="Memory 6" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/sanjay.webm" type="video/webm"><source src="images/sanjay.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video1.webm" type="video/webm"><source src="images/video1.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video2.webm" type="video/webm"><source src="images/video2.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video3.webm" type="video/webm"><source src="images/video3.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video4.webm" type="video/webm"><source src="images/video4.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video5.webm" type="video/webm"><source src="images/video5.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video6.webm" type="video/webm"><source src="images/video6.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/pearly.webm" type="video/webm"><source src="images/pearly.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/abhi.webm" type="video/webm"><source src="images/abhi.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new2.webm" type="video/webm"><source src="images/new2.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new3.webm" type="video/webm"><source src="images/new3.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new4.webm" type="video/webm"><source src="images/new4.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new5.webm" type="video/webm"><source src="images/new5.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new6.webm" type="video/webm"><source src="images/new6.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new7.webm" type="video/webm"><source src="images/new7.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new8.webm" type="video/webm"><source src="images/new8.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new9.webm" type="video/webm"><source src="images/new9.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new10.webm" type="video/webm"><source src="images/new10.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <img src="images/sree.jpg" alt="Sree" />
+            </div>
+          </div>
+
+          <!-- Row 2: 14 items -->
+          <div class="gallery-row">
+            <div class="wandering-item">
+              <img src="images/image7.jpg" alt="Memory 7" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/image8.jpg" alt="Memory 8" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/image9.jpg" alt="Memory 9" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/image10.jpg" alt="Memory 10" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/image11.jpg" alt="Memory 11" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/image12.jpg" alt="Memory 12" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/shyamali.webm" type="video/webm"><source src="images/shyamali.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video7.webm" type="video/webm"><source src="images/video7.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video8.webm" type="video/webm"><source src="images/video8.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video9.webm" type="video/webm"><source src="images/video9.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video10.webm" type="video/webm"><source src="images/video10.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video11.webm" type="video/webm"><source src="images/video11.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video12.webm" type="video/webm"><source src="images/video12.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new2.webm" type="video/webm"><source src="images/new2.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new5.webm" type="video/webm"><source src="images/new5.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new8.webm" type="video/webm"><source src="images/new8.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <img src="images/reshma.jpg" alt="Reshma" />
+            </div>
+            <!-- Duplicate for seamless infinite scroll -->
+            <div class="wandering-item">
+              <img src="images/image7.jpg" alt="Memory 7" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/image8.jpg" alt="Memory 8" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/image9.jpg" alt="Memory 9" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/image10.jpg" alt="Memory 10" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/image11.jpg" alt="Memory 11" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/image12.jpg" alt="Memory 12" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/shyamali.webm" type="video/webm"><source src="images/shyamali.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video7.webm" type="video/webm"><source src="images/video7.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video8.webm" type="video/webm"><source src="images/video8.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video9.webm" type="video/webm"><source src="images/video9.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video10.webm" type="video/webm"><source src="images/video10.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video11.webm" type="video/webm"><source src="images/video11.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video12.webm" type="video/webm"><source src="images/video12.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new2.webm" type="video/webm"><source src="images/new2.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new5.webm" type="video/webm"><source src="images/new5.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new8.webm" type="video/webm"><source src="images/new8.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <img src="images/reshma.jpg" alt="Reshma" />
+            </div>
+          </div>
+
+          <!-- Row 3: 14 items -->
+          <div class="gallery-row">
+            <div class="wandering-item">
+              <img src="images/image13.jpg" alt="Memory 13" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/image14.jpg" alt="Memory 14" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/image15.jpg" alt="Memory 15" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/image16.jpg" alt="Memory 16" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/image17.jpg" alt="Memory 17" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/image18.jpg" alt="Memory 18" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/adhi.jpg" alt="Adhi" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/hari.jpg" alt="Hari" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/sairam.jpg" alt="Sairam" />
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video13.webm" type="video/webm"><source src="images/video13.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video14.webm" type="video/webm"><source src="images/video14.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video15.webm" type="video/webm"><source src="images/video15.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video16.webm" type="video/webm"><source src="images/video16.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video17.webm" type="video/webm"><source src="images/video17.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video18.webm" type="video/webm"><source src="images/video18.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/pearly.webm" type="video/webm"><source src="images/pearly.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/abhi.webm" type="video/webm"><source src="images/abhi.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new3.webm" type="video/webm"><source src="images/new3.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new4.webm" type="video/webm"><source src="images/new4.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new6.webm" type="video/webm"><source src="images/new6.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new7.webm" type="video/webm"><source src="images/new7.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new9.webm" type="video/webm"><source src="images/new9.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new10.webm" type="video/webm"><source src="images/new10.mp4" type="video/mp4"></video>
+            </div>
+            <!-- Duplicate for seamless infinite scroll -->
+            <div class="wandering-item">
+              <img src="images/image13.jpg" alt="Memory 13" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/image14.jpg" alt="Memory 14" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/image15.jpg" alt="Memory 15" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/image16.jpg" alt="Memory 16" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/image17.jpg" alt="Memory 17" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/image18.jpg" alt="Memory 18" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/adhi.jpg" alt="Adhi" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/hari.jpg" alt="Hari" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/sairam.jpg" alt="Sairam" />
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video13.webm" type="video/webm"><source src="images/video13.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video14.webm" type="video/webm"><source src="images/video14.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video15.webm" type="video/webm"><source src="images/video15.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video16.webm" type="video/webm"><source src="images/video16.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video17.webm" type="video/webm"><source src="images/video17.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/video18.webm" type="video/webm"><source src="images/video18.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/pearly.webm" type="video/webm"><source src="images/pearly.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/abhi.webm" type="video/webm"><source src="images/abhi.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new3.webm" type="video/webm"><source src="images/new3.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new4.webm" type="video/webm"><source src="images/new4.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new6.webm" type="video/webm"><source src="images/new6.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new7.webm" type="video/webm"><source src="images/new7.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new9.webm" type="video/webm"><source src="images/new9.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <video loop playsinline preload="metadata" muted class="gallery-video"><source src="images/new10.webm" type="video/webm"><source src="images/new10.mp4" type="video/mp4"></video>
+            </div>
+            <div class="wandering-item">
+              <img src="images/new1.jpg" alt="Memory new1" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/new11.jpg" alt="Memory new11" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/new12.jpg" alt="Memory new12" loading="lazy" />
+            </div>
+            <div class="wandering-item">
+              <img src="images/new13.jpg" alt="Memory new13" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox modal -->
+    <div id="lightbox" class="lightbox" aria-hidden="true">
+      <div class="lightbox-content">
+        <button id="lb-close" class="lb-close" aria-label="Close">×</button>
+        <img id="lb-image" src="" alt="" />
+        <p id="lb-caption"></p>
+      </div>
+    </div>
+
+    <!-- Pep Modal for expanded view -->
+    <div id="pep-modal" class="pep-modal" aria-hidden="true">
+      <div class="pep-modal-content">
+        <button class="pep-modal-close" aria-label="Close modal">&times;</button>
+        <div class="pep-modal-inner">
+          <div class="pep-modal-image">
+            <button class="pep-maximize-btn" aria-label="Maximize image" title="View fullscreen">⛶</button>
+            <img id="pep-modal-img" src="" alt="" />
+            <video id="pep-modal-video" src="" autoplay muted loop playsinline style="display:none;"></video>
+          </div>
+          <div class="pep-modal-text">
+            <h3 id="pep-modal-name"></h3>
+            <p id="pep-modal-note"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fullscreen Gallery Viewer -->
+    <div id="gallery-fullscreen" class="gallery-fullscreen" aria-hidden="true">
+      <button class="gallery-fullscreen-close" aria-label="Close fullscreen">&times;</button>
+      <div class="gallery-fullscreen-content">
+        <img id="gallery-fullscreen-img" src="" alt="" style="display:none;" />
+        <video id="gallery-fullscreen-video" src="" controls loop style="display:none;"></video>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Creator's Request Section -->
+  <section class="creator-request-section">
+    <div class="creator-request-content">
+      <div class="request-icon">
+        <svg width="70" height="70" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="starGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+              <stop offset="50%" style="stop-color:#8b5cf6;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#a855f7;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" 
+                fill="url(#starGradient)" stroke="url(#starGradient)" stroke-width="0.5"/>
+          <circle cx="12" cy="12" r="11" stroke="url(#starGradient)" stroke-width="0.5" fill="none" opacity="0.3"/>
+        </svg>
+      </div>
+      <p class="click-text">Click this button</p>
+      <button class="creator-request-btn" id="creatorRequestBtn">
+        <span class="btn-shine"></span>
+        <span class="btn-content">Creator's Request</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Question Modal -->
+  <div class="question-modal" id="questionModal" aria-hidden="true">
+    <div class="question-modal-content">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      
+      <div class="modal-badge">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 15V12M12 9H12.01M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" 
+                stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>Private Access</span>
+      </div>
+      
+      <h3 class="modal-heading">Unlock Creator's Wishes</h3>
+      
+      
+      <p class="contact-text">Contact creator if you don't know the answer</p>
+      
+      <p class="question-text">Creator's favourite maalai?</p>
+      
+      <input type="text" id="answerInput" class="answer-input" placeholder="Type your answer..." autocomplete="off">
+      
+      <button class="submit-answer-btn" id="submitAnswer">
+        <span>Submit Answer</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="footer-text">
+        Crafted with <span class="footer-love">♥</span> by <span class="footer-name">Vicky</span>
+      </p>
+      <p class="footer-year">© 2025 • All Memories Preserved</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="premium-script.js"></script>
+</body>
+
+</html>
+
