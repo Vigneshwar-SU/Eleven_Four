@@ -116,7 +116,38 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .btn:hover::before{width:300px;height:300px}
 .btn:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 12px 32px rgba(30,64,175,0.4)}
 .btn:active{transform:translateY(-2px) scale(1.02)}
-.site-footer{padding:2rem 0;text-align:center;color:var(--muted);font-size:0.9rem;background:linear-gradient(180deg, transparent 0%, rgba(240,247,255,0.5) 100%);margin-top:3rem}
+
+/* Footer */
+.site-footer{padding:4rem 0 2rem;text-align:center;background:linear-gradient(180deg, transparent 0%, #f0f7ff 50%, #e0f2fe 100%);margin-top:4rem;position:relative;overflow:hidden}
+.site-footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg, transparent 0%, rgba(59,130,246,0.3) 50%, transparent 100%)}
+.footer-content{max-width:600px;margin:0 auto;padding:0 2rem;position:relative;z-index:1}
+.footer-heart{margin:0 auto 1.5rem;animation:gentlePulse 3s ease-in-out infinite}
+.footer-heart svg{filter:drop-shadow(0 4px 12px rgba(59,130,246,0.3))}
+.footer-main{font-size:1.1rem;color:#1e40af;margin:0 0 1rem;font-weight:500;line-height:1.6}
+.footer-love{color:#ef4444;display:inline-block;animation:heartPulse 1.5s ease-in-out infinite;font-size:1.3em;vertical-align:middle}
+.footer-sparkles{font-size:1.5rem;margin:1rem 0;opacity:0.8;animation:sparkleFloat 3s ease-in-out infinite}
+.footer-credit{font-size:1rem;color:#3b82f6;margin:1.5rem 0 0.5rem;font-weight:500}
+.footer-name{background:linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700;font-size:1.2em;letter-spacing:0.5px;display:inline-block;position:relative}
+.footer-name::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:2px;background:linear-gradient(90deg, #3b82f6, #60a5fa, #3b82f6);background-size:200% 100%;animation:underlineShine 2s linear infinite}
+.footer-year{font-size:0.85rem;color:#64748b;margin:0.5rem 0 0;opacity:0.8}
+
+@keyframes gentlePulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.05)}
+}
+@keyframes heartPulse{
+  0%,100%{transform:scale(1)}
+  10%,30%{transform:scale(0.95)}
+  20%,40%{transform:scale(1.15)}
+}
+@keyframes sparkleFloat{
+  0%,100%{transform:translateY(0px)}
+  50%{transform:translateY(-5px)}
+}
+@keyframes underlineShine{
+  0%{background-position:200% 0}
+  100%{background-position:-200% 0}
+}
 
 /* Lightbox */
 .lightbox{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.75);padding:1rem;z-index:1000}
@@ -127,6 +158,39 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .lb-close{position:absolute;right:0;top:-44px;background:#fff;border:0;font-size:1.4rem;color:var(--dark);border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(30,64,175,0.2);cursor:pointer;transition:all 0.2s ease;-webkit-tap-highlight-color:transparent}
 .lb-close:hover{transform:scale(1.1);background:var(--accent-3)}
 .lb-close:active{transform:scale(0.95)}
+
+/* Stay Tuned Section */
+.stay-tuned-section{padding:6rem 2rem;background:linear-gradient(135deg, #f0f7ff 0%, #e0f2fe 50%, #f0f7ff 100%);position:relative;overflow:hidden;text-align:center}
+.stay-tuned-section::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at center, rgba(59,130,246,0.1) 0%, transparent 70%);animation:rotateGlow 20s linear infinite;pointer-events:none}
+.stay-tuned-content{max-width:600px;margin:0 auto;position:relative;z-index:1}
+.stay-tuned-icon{margin:0 auto 2rem;animation:floatBounce 3s ease-in-out infinite}
+.stay-tuned-icon svg{filter:drop-shadow(0 8px 16px rgba(59,130,246,0.3))}
+.stay-tuned-title{font-family:'Great Vibes',serif;font-size:3.5rem;margin:0 0 1rem;background:linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:titleGlow 3s ease-in-out infinite;line-height:1.2}
+.stay-tuned-subtitle{font-size:1.2rem;color:#3b82f6;margin:0 0 2rem;font-weight:500;opacity:0.9}
+.stay-tuned-dots{display:flex;gap:0.8rem;justify-content:center;align-items:center}
+.stay-tuned-dots .dot{width:12px;height:12px;background:linear-gradient(135deg, #3b82f6, #1e40af);border-radius:50%;animation:dotBounce 1.4s ease-in-out infinite;box-shadow:0 4px 8px rgba(59,130,246,0.3)}
+.stay-tuned-dots .dot:nth-child(1){animation-delay:0s}
+.stay-tuned-dots .dot:nth-child(2){animation-delay:0.2s}
+.stay-tuned-dots .dot:nth-child(3){animation-delay:0.4s}
+
+@keyframes floatBounce{
+  0%,100%{transform:translateY(0px) rotate(0deg)}
+  25%{transform:translateY(-10px) rotate(-5deg)}
+  50%{transform:translateY(-5px) rotate(0deg)}
+  75%{transform:translateY(-10px) rotate(5deg)}
+}
+@keyframes titleGlow{
+  0%,100%{filter:drop-shadow(0 0 10px rgba(59,130,246,0.3))}
+  50%{filter:drop-shadow(0 0 20px rgba(59,130,246,0.6))}
+}
+@keyframes dotBounce{
+  0%,100%{transform:translateY(0) scale(1)}
+  50%{transform:translateY(-15px) scale(1.2)}
+}
+@keyframes rotateGlow{
+  0%{transform:rotate(0deg)}
+  100%{transform:rotate(360deg)}
+}
 
 /* Pep Modal Styles */
 .pep-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:1rem;z-index:2000;animation:fadeIn 0.3s ease}
