@@ -227,6 +227,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   // Pep Modal functionality
   const pepModal = document.getElementById('pep-modal');
   const pepModalImg = document.getElementById('pep-modal-img');
+  const pepModalVideo = document.getElementById('pep-modal-video');
   const pepModalName = document.getElementById('pep-modal-name');
   const pepModalNote = document.getElementById('pep-modal-note');
   const pepModalClose = document.querySelector('.pep-modal-close');
@@ -248,17 +249,28 @@ document.addEventListener('DOMContentLoaded', ()=>{
     card.style.cursor = 'pointer';
     card.addEventListener('click', () => {
       const img = card.querySelector('.pep-image img');
+      const video = card.querySelector('.pep-image video');
       const name = card.querySelector('.pep-name');
       const note = card.querySelector('.pep-note');
 
-      if(img && name && note) {
-        pepModalImg.src = img.src;
-        pepModalImg.alt = img.alt;
+      if(name && note) {
         pepModalName.textContent = name.textContent;
         pepModalNote.textContent = note.textContent;
         
-        // Set the blurred background image
-        pepModal.style.setProperty('--modal-bg-image', `url(${img.src})`);
+        if(video) {
+          // Show video, hide image
+          pepModalVideo.src = video.src;
+          pepModalVideo.style.display = 'block';
+          pepModalImg.style.display = 'none';
+          pepModal.style.setProperty('--modal-bg-image', `url(${video.currentSrc || video.src})`);
+        } else if(img) {
+          // Show image, hide video
+          pepModalImg.src = img.src;
+          pepModalImg.alt = img.alt;
+          pepModalImg.style.display = 'block';
+          pepModalVideo.style.display = 'none';
+          pepModal.style.setProperty('--modal-bg-image', `url(${img.src})`);
+        }
         
         pepModal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden'; // Prevent background scrolling
@@ -332,5 +344,72 @@ document.addEventListener('DOMContentLoaded', ()=>{
       }
     });
   }
+
+  // Wandering Gallery Fullscreen Functionality
+  const galleryFullscreen = document.getElementById('gallery-fullscreen');
+  const galleryFullscreenImg = document.getElementById('gallery-fullscreen-img');
+  const galleryFullscreenVideo = document.getElementById('gallery-fullscreen-video');
+  const galleryFullscreenClose = document.querySelector('.gallery-fullscreen-close');
+  const wanderingItems = document.querySelectorAll('.wandering-item');
+
+  wanderingItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const img = item.querySelector('img');
+      const video = item.querySelector('video');
+      
+      if(img) {
+        // Show image
+        galleryFullscreenImg.src = img.src;
+        galleryFullscreenImg.alt = img.alt;
+        galleryFullscreenImg.style.display = 'block';
+        galleryFullscreenVideo.style.display = 'none';
+        galleryFullscreenVideo.pause();
+      } else if(video) {
+        // Show video
+        galleryFullscreenVideo.src = video.src;
+        galleryFullscreenVideo.style.display = 'block';
+        galleryFullscreenImg.style.display = 'none';
+        galleryFullscreenVideo.play();
+      }
+      
+      galleryFullscreen.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  // Close gallery fullscreen
+  function closeGalleryFullscreen() {
+    galleryFullscreen.setAttribute('aria-hidden', 'true');
+    galleryFullscreenImg.src = '';
+    galleryFullscreenVideo.src = '';
+    galleryFullscreenVideo.pause();
+    document.body.style.overflow = '';
+  }
+
+  if(galleryFullscreenClose) {
+    galleryFullscreenClose.addEventListener('click', closeGalleryFullscreen);
+  }
+
+  if(galleryFullscreen) {
+    galleryFullscreen.addEventListener('click', (e) => {
+      if(e.target === galleryFullscreen) {
+        closeGalleryFullscreen();
+      }
+    });
+  }
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape' && galleryFullscreen.getAttribute('aria-hidden') === 'false') {
+      closeGalleryFullscreen();
+    }
+  });
+
+  // Auto-play videos in wandering gallery
+  const wanderingVideos = document.querySelectorAll('.wandering-item video');
+  wanderingVideos.forEach(video => {
+    video.play();
+  });
 });
+
 
